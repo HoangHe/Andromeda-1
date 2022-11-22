@@ -10,49 +10,38 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
-public class MainActivity extends AppCompatActivity {
+public class TimKiemActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_tim_kiem);
 
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayShowHomeEnabled(true);
-        // Định dạng màu cho Actionbar
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setTitle("Tìm Kiếm");
         actionBar.setBackgroundDrawable(new ColorDrawable(Color.BLACK));
-        // Hiện Thị Logo
-        actionBar.setLogo(R.mipmap.ic_launcher);
-        actionBar.setDisplayUseLogoEnabled(true);
-
 
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_actionbar,menu);
+        getMenuInflater().inflate(R.menu.menu_actionbar_tim_kiem,menu);
         return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.icon_search:
-                startActivity(new Intent(MainActivity.this, TimKiemActivity.class));
+        switch (item.getItemId())  {
+            case android.R.id.home:
+                onBackPressed();
                 return true;
             case R.id.icon_profile:
-                startActivity(new Intent(MainActivity.this, ProfileActivity.class));
-                return true;
-            case R.id.icon_thong_bao:
-                startActivity(new Intent(MainActivity.this, ThongBaoActivity.class));
+                startActivity(new Intent(TimKiemActivity.this, ProfileActivity.class));
                 return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
-    public void anVao(View view) {
-        startActivity(new Intent(MainActivity.this,ThongBaoActivity.class));
-    }
 }
