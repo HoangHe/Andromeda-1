@@ -52,7 +52,4 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void anVao(View view) {
-        startActivity(new Intent(MainActivity.this,ThongBaoActivity.class));
-    }
 }
